@@ -8,41 +8,53 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private Date dateOfBirthd;
-	
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getFirstName() {
 		return firstName;
 	}
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
 	public String getLastName() {
 		return lastName;
 	}
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
 	public Date getDateOfBirthd() {
 		return dateOfBirthd;
 	}
+
 	public void setDateOfBirthd(Date dateOfBirthd) {
-		this.dateOfBirthd = dateOfBirthd;
+		Date temp =new Date(0);
+		temp.setDate(dateOfBirthd.getDate());
+		temp.setYear(dateOfBirthd.getYear());
+		temp.setMonth(dateOfBirthd.getMonth());
+		this.dateOfBirthd = temp;
 	}
-	public String getFullName() {
-		// TODO Auto-generated method stub
+
+	public Object getFullName() {
 		return getLastName() + ", " + getFirstName();
 	}
-	public int getAge() {
+
+	public Object getAge() {
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(new Date());
 		int currentYear = calendar.get(Calendar.YEAR);
 		calendar.setTime(getDateOfBirthd());
-		int year = calendar.get(Calendar.YEAR);
-		return currentYear - year;
-	}	
+		return currentYear - calendar.get(Calendar.YEAR);
+	}
+
 }
