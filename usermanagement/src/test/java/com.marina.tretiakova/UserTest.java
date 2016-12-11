@@ -13,13 +13,14 @@ public class UserTest extends TestCase {
 	private User user;
 	private Date dateOfBirthd;
 
+	@Override
 	@Before
 	protected void setUp() throws Exception {
 		super.setUp();
 
 		user = new User();
 		Calendar calendar = Calendar.getInstance();
-		calendar.set(1997, Calendar.NOVEMBER, 25);
+		calendar.set(1996, Calendar.NOVEMBER, 30);
 		dateOfBirthd = calendar.getTime();
 	}
 
@@ -36,6 +37,6 @@ public class UserTest extends TestCase {
 		calendar.setTime(new Date());
 		int currentYear = calendar.get(Calendar.YEAR);
 		user.setDateOfBirthd(dateOfBirthd);
-		assertEquals(currentYear - 1997, user.getAge());
+		assertEquals(currentYear - 1996, user.getAge());
 	}
 }
